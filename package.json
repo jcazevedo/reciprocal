@@ -1,0 +1,12 @@
+{
+  "name": "reciprocal",
+  "version": "0.0.1",
+  "description": "Code golf",
+  "main": "main.js",
+  "scripts": {
+    "test": "node reciprocal_test.js",
+    "minify": "npx google-closure-compiler --js=main.js --js_output_file=out.js --language_out=ECMASCRIPT_2015"
+  },
+  "author": "Joao Azevedo",
+  "license": "MIT"
+}
