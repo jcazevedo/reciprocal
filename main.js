@@ -1,4 +1,4 @@
-f = (alphabet, key, [...text], i=0, a2=alphabet+alphabet) =>
-  text.map(ch => 
+f = (alphabet, key, text, i=0, a2=alphabet+alphabet) =>
+  [...text].map(ch => 
                 (~(c = alphabet.indexOf(ch))) ? (a2[a2.indexOf(key[i++ % key.length], c) - c]||ch)  : ""
                ).join``;
