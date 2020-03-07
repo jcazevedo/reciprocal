@@ -12,7 +12,7 @@ let maxAlphabet = 200;
 let maxKey = 200;
 let maxText = 200;
 
-let randomChar = () => String.fromCharCode(Math.random() * 256);
+let randomChar = () => String.fromCharCode(Math.random() * 96 + 32);
 
 let generateAlphabet = (length) => {
   let result = "";
