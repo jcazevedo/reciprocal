@@ -47,7 +47,6 @@ for (let t = 0; t < nTests; t++) {
   let alphabet = generateAlphabet(Math.floor(Math.random() * maxAlphabet) + 1);
   let key = generateKey(alphabet, Math.floor(Math.random() * maxKey));
   let text = generateText(Math.floor(Math.random() * maxText) + 1);
-  console.log(alphabet, key, text);
   let resCorrect = correctF(alphabet, key, text);
   let res = newF(alphabet, key, text);
   assert.equal(resCorrect, res);
