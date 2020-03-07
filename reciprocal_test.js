@@ -59,6 +59,8 @@ for (let t = 0; t < nTests; t++) {
     Math.floor(Math.random() * maxText));
 }
 
-test(0, 0, 0);
+test(1, 0, 0);
+test(1, 0, 10);
 test(10, 0, 10);
+test(10, 10, 10);
 test(10, 10, 0);
