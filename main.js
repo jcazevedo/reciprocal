@@ -1,37 +1,16 @@
-f = (alphabet, key, text) => {
-  let tabula = [];
-  for (let i = 0; i < alphabet.length; ++i) {
-    tabula[i] = [];
-    for (let j = 0; j < alphabet.length; ++j) {
-      tabula[i][j] = alphabet[(j + i) % alphabet.length];
-    }
-  }
-  let res = "";
-  let skip = 0;
-  for (let i = 0; i < text.length; ++i) {
-    let resC = -1;
-    for (let j = 0; j < tabula[0].length; ++j) {
-      if (tabula[0][j] == text[i]) {
-        resC = j;
-        break;
-      }
-    }
+f = (alphabet, key, text, skip=0, l = alphabet.length) =>
+  text.split("").map((ch, i) => {
+    let resC = alphabet.search(ch);
     if (resC == -1) {
       skip++;
-      continue;
+      return "";
     }
     let resR = -1;
-    for (let j = 0; j < tabula.length; ++j) {
-      if (tabula[j][resC] == key[(i - skip) % key.length]) {
-        resR = j;
+    for (let j = resC; j < resC + l; ++j) {
+      if (alphabet[j % l] == key[(i - skip) % key.length]) {
+        resR = j - resC;
         break;
       }
     }
-    if (resR == -1) {
-      res += text[i];
-    } else {
-      res += tabula[resR][0];
-    }
-  }
-  return res;
-}
+    return (resR == -1 ? ch : alphabet[resR % l]);
+  }).join("");
