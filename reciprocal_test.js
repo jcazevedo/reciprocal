@@ -7,12 +7,12 @@ let sourceFile = './main.js';
 let correctF = eval(fs.readFileSync(correctFile) + "; f");
 let newF = eval(fs.readFileSync(sourceFile) + "; f");
 
-let nTests = 100;
-let maxAlphabet = 26;
-let maxKey = 26;
-let maxText = 100;
-let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-let charactersLength = characters.length;
+let nTests = 1000;
+let maxAlphabet = 200;
+let maxKey = 200;
+let maxText = 200;
+
+let randomChar = () => String.fromCharCode(Math.random() * 256);
 
 let generateAlphabet = (length) => {
   let result = "";
@@ -20,9 +20,9 @@ let generateAlphabet = (length) => {
   for (let i = 0; i < length; ++i) {
     let next;
     do {
-      next = Math.floor(Math.random() * charactersLength);
+      next = randomChar();
     } while (visited.includes(next))
-    result += characters[next];
+    result += next;
   }
   return result;
 };
@@ -38,16 +38,27 @@ let generateKey = (alphabet, length) => {
 let generateText = (length) => {
   let result = "";
   for (let i = 0; i < length; ++i) {
-    result += characters[Math.floor(Math.random() * charactersLength)];
+    result += randomChar();
   }
   return result;
 };
 
-for (let t = 0; t < nTests; t++) {
-  let alphabet = generateAlphabet(Math.floor(Math.random() * maxAlphabet) + 1);
-  let key = generateKey(alphabet, Math.floor(Math.random() * maxKey));
-  let text = generateText(Math.floor(Math.random() * maxText) + 1);
+let test = (alphabetSize, keySize, textSize) => {
+  let alphabet = generateAlphabet(alphabetSize);
+  let key = generateKey(alphabet, keySize);
+  let text = generateText(textSize);
   let resCorrect = correctF(alphabet, key, text);
   let res = newF(alphabet, key, text);
   assert.equal(resCorrect, res);
 }
+
+for (let t = 0; t < nTests; t++) {
+  test(
+    Math.floor(Math.random() * maxAlphabet) + 1,
+    Math.floor(Math.random() * maxKey),
+    Math.floor(Math.random() * maxText));
+}
+
+test(0, 0, 0);
+test(10, 0, 10);
+test(10, 10, 0);
