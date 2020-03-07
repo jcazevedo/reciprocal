@@ -1,16 +1,14 @@
-f = (alphabet, key, text, skip=0, l = alphabet.length) =>
-  text.split("").map((ch, i) => {
-    let resC = alphabet.search(ch);
-    if (resC == -1) {
-      skip++;
-      return "";
-    }
-    let resR = -1;
-    for (let j = resC; j < resC + l; ++j) {
-      if (alphabet[j % l] == key[(i - skip) % key.length]) {
-        resR = j - resC;
-        break;
+f = (alphabet, key, text, i=0, l = alphabet.length,res="") =>
+  [...text].map(ch => {
+    if (~(c = alphabet.search(ch))) {
+      r = -1;
+      for (j = 0; j < l; ++j) {
+        if (alphabet[(j + c) % l] == key[i % key.length]) {
+          r = j;
+          break;
+        }
       }
+      ++i;
+      res+=(r == -1 ? ch : alphabet[r % l]);
     }
-    return (resR == -1 ? ch : alphabet[resR % l]);
-  }).join("");
+  })&&res;
