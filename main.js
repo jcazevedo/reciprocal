@@ -1,4 +1,1 @@
-f = (alphabet, key, text, i=0) =>
-  text.replace(/./g,ch => 
-                (~(c = alphabet.indexOf(ch))) ? (alphabet[(alphabet+alphabet).indexOf(key[i++ % key.length], c) - c]||ch)  : ""
-               )
+f=(a,k,t,i=0)=>t.replace(/./g,h=>~(c=a.indexOf(h))?a[(a+a).indexOf(k[i++%k.length],c)-c]||h:"")
