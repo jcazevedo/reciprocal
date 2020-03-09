@@ -50,7 +50,7 @@ let test = (alphabetSize, keySize, textSize) => {
   let resCorrect = correctF(alphabet, key, text);
   let res = newF(alphabet, key, text);
   assert.equal(resCorrect, res);
-}
+};
 
 for (let t = 0; t < nTests; t++) {
   test(
