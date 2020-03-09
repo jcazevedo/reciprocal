@@ -54,7 +54,7 @@ let test = (alphabetSize, keySize, textSize) => {
 
 for (let t = 0; t < nTests; t++) {
   test(
-    Math.floor(Math.random() * maxAlphabet) + 1,
+    Math.floor(Math.random() * (maxAlphabet - 1)) + 1,
     Math.floor(Math.random() * maxKey),
     Math.floor(Math.random() * maxText));
 }
