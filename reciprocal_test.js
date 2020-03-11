@@ -48,6 +48,11 @@ let test = (alphabetSize, keySize, textSize) => {
   let text = generateText(textSize);
   let resCorrect = correctF(alphabet, key, text);
   let res = newF(alphabet, key, text);
+  console.log("A =", alphabet);
+  console.log("K =", key);
+  console.log("T =", text);
+  console.log("R =", res);
+  console.log();
   assert.equal(resCorrect, res);
 };
 
