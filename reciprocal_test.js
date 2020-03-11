@@ -8,7 +8,7 @@ let correctF = eval(fs.readFileSync(correctFile) + "; f");
 let newF = eval(fs.readFileSync(sourceFile) + "; f");
 
 let nTests = 1000;
-let maxAlphabet = 200;
+let maxAlphabet = 96;
 let maxKey = 200;
 let maxText = 200;
 
@@ -16,12 +16,11 @@ let randomChar = () => String.fromCharCode(Math.random() * 96 + 32);
 
 let generateAlphabet = (length) => {
   let result = "";
-  let visited = [];
   for (let i = 0; i < length; ++i) {
     let next;
     do {
       next = randomChar();
-    } while (visited.includes(next))
+    } while (result.includes(next))
     result += next;
   }
   return result;
