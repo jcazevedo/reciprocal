@@ -56,15 +56,24 @@ let test = (alphabetSize, keySize, textSize) => {
   assert.equal(resCorrect, res);
 };
 
-for (let t = 0; t < nTests; t++) {
-  test(
+tests = [
+  [1, 0, 0],
+  [1, 0, 10],
+  [10, 0, 10],
+  [10, 10, 10],
+  [10, 10, 0]
+];
+
+while (tests.length < nTests) {
+  tests.push([
     Math.floor(Math.random() * (maxAlphabet - 1)) + 1,
     Math.floor(Math.random() * maxKey),
-    Math.floor(Math.random() * maxText));
+    Math.floor(Math.random() * maxText)
+  ]);
 }
 
-test(1, 0, 0);
-test(1, 0, 10);
-test(10, 0, 10);
-test(10, 10, 10);
-test(10, 10, 0);
+for (let i = 0; i < nTests; i++) {
+  let [a, k, t] = tests[i];
+  console.log(tests[i], a, k, t);
+  test(a, k, t);
+}
