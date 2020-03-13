@@ -73,6 +73,5 @@ while (tests.length < nTests) {
 }
 
 for (let i = 0; i < nTests; i++) {
-  let [a, k, t] = tests[i];
-  test(a, k, t);
+  test(...tests[i]);
 }
