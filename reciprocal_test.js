@@ -74,6 +74,5 @@ while (tests.length < nTests) {
 
 for (let i = 0; i < nTests; i++) {
   let [a, k, t] = tests[i];
-  console.log(tests[i], a, k, t);
   test(a, k, t);
 }
