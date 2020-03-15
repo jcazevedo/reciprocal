@@ -1,1 +1,1 @@
-f=(a,k,t,i=j=0)=>t.replace(/./g,h=>~(c=a[g=`indexOf`](h))?a[(a+a)[g]((j+=k)[++i],c)-c]||h:"")
+f=(a,k,t,i=j=1)=>t.replace(/./g,h=>~(c=a.indexOf(h))?a[(a+a).indexOf((j+=k)[i++],c)-c]||h:"")
